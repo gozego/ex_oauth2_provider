@@ -4,17 +4,19 @@ defmodule ExOauth2Provider.OauthApplications.OauthApplication do
   use Ecto.Schema
   require Logger
 
+  alias ExOauth2Provider.Config
+
   # For Phoenix integrations
   if Code.ensure_loaded?(Phoenix.Param) do
     @derive {Phoenix.Param, key: :uid}
   end
 
   schema "oauth_applications" do
-    if is_nil(ExOauth2Provider.Config.application_owner_struct()) do
+    if is_nil(Config.application_owner_struct()) do
       Logger.error("You need to set a resource_owner or application_owner in your config and recompile ex_oauth2_provider!")
     end
 
-    belongs_to :owner, ExOauth2Provider.Config.application_owner_struct()
+    belongs_to :owner, Config.application_owner_struct(), Config.application_owner_opts()
 
     field :name,         :string,     null: false
     field :uid,          :string,     null: false
