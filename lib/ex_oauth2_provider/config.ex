@@ -16,6 +16,11 @@ defmodule ExOauth2Provider.Config do
   end
 
   @doc false
+  def resource_owner_pkey do
+    Keyword.get(config(), :resource_owner_pkey, [])
+  end
+
+  @doc false
   def application_owner_struct do
     Keyword.get(config(), :application_owner, resource_owner_struct())
   end
