@@ -130,13 +130,13 @@ defmodule ExOauth2Provider.OauthAccessTokens do
     |> new_token_changeset(attrs)
     |> ExOauth2Provider.repo.insert()
   end
-  def create_token(%{id: _} = resource_owner, %{application: application} = attrs) do
+  def create_token(%{} = resource_owner, %{application: application} = attrs) do
     %OauthAccessToken{application: application, resource_owner: resource_owner}
     |> application_owner_token_changeset(attrs)
     |> new_token_changeset(attrs)
     |> ExOauth2Provider.repo.insert()
   end
-  def create_token(%{id: _} = resource_owner, attrs) do
+  def create_token(%{} = resource_owner, attrs) do
     %OauthAccessToken{resource_owner: resource_owner}
     |> resource_owner_token_changeset(attrs)
     |> new_token_changeset(attrs)
