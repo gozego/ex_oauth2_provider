@@ -9,6 +9,7 @@ defmodule ExOauth2Provider.OauthAccessTokens do
   use ExOauth2Provider.Mixin.Scopes
   alias ExOauth2Provider.OauthAccessTokens.OauthAccessToken
   alias ExOauth2Provider.OauthApplications.OauthApplication
+  alias ExOauth2Provider.Config
 
   @doc """
   Gets a single access token.
@@ -193,8 +194,9 @@ defmodule ExOauth2Provider.OauthAccessTokens do
   end
 
   defp transform_resource_owner_assocation_in_attrs(%{resource_owner: resource_owner} = attrs) do
+    resource_owner_id = Map.get(resource_owner, Config.resource_owner_pkey())
     attrs
-    |> Map.merge(%{resource_owner_id: resource_owner.id})
+    |> Map.merge(%{resource_owner_id: resource_owner_id})
     |> Map.delete(:resource_owner)
   end
   defp transform_resource_owner_assocation_in_attrs(attrs), do: attrs
