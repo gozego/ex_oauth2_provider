@@ -337,7 +337,7 @@ defmodule ExOauth2Provider.OauthAccessTokens do
     {module, method} = ExOauth2Provider.Config.access_token_generator() || {ExOauth2Provider.Utils, :generate_token}
 
     {_, resource_owner} = fetch_field(changeset, :resource_owner)
-    resource_owner_id   = if is_nil(resource_owner), do: nil, else: resource_owner.id
+    resource_owner_id   = if is_nil(resource_owner), do: nil, else: Map.get(resource_owner, Config.resource_owner_pkey())
     {_, scopes}         = fetch_field(changeset, :scopes)
     {_, application}    = fetch_field(changeset, :application)
     {_, expires_in}     = fetch_field(changeset, :expires_in)

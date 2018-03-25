@@ -17,7 +17,7 @@ defmodule ExOauth2Provider.Config do
 
   @doc false
   def resource_owner_pkey do
-    Keyword.get(config(), :resource_owner_pkey, [])
+    Keyword.get(config(), :resource_owner_pkey, :id)
   end
 
   @doc false
