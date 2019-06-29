@@ -37,7 +37,8 @@ defmodule ExOauth2Provider.Mixfile do
   defp elixirc_paths(_), do: ["lib"]
 
   defp deps do
-    [{:ecto, "~> 2.1"},
+    [{:ecto, "~> 3.0"},
+     {:ecto_sql, "~> 3.0"},
      {:plug, "~> 1.0 or ~> 1.1 or ~> 1.2 or ~> 1.3"},
      {:poison, "~> 2.0 or ~> 3.0"},
      {:postgrex, ">= 0.11.1", optional: true},

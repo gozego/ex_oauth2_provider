@@ -4,6 +4,7 @@ defmodule Mix.Tasks.ExOauth2Provider.Install do
   import Macro, only: [camelize: 1]
   import Mix.Generator
   import Mix.Ecto
+  import Ecto.Migrator
 
   @shortdoc "Generates a new migration for the repo"
 
