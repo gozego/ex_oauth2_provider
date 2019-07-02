@@ -202,13 +202,14 @@ defmodule ExOauth2Provider.OauthApplications do
     |> unique_constraint(:uid)
   end
 
-  defp new_application_changeset(%OauthApplication{} = application, %{id: _} = owner, params) do
+  defp new_application_changeset(%OauthApplication{} = application, %{id: owner_id} = _owner, params) do
     application
     |> cast(params, [:uid, :secret])
     |> put_uid
     |> put_secret
     |> put_scopes
-    |> put_assoc(:owner, owner)
+    |> put_change(:owner_id, owner_id)
+    # |> put_assoc(:owner, owner)
     |> assoc_constraint(:owner)
     |> apply_changes
     |> application_changeset(params)
