@@ -14,7 +14,7 @@ defmodule ExOauth2Provider.OauthAccessGrants.OauthAccessGrant do
     field :token,        :string,     null: false
     field :expires_in,   :integer,    null: false
     field :redirect_uri, :string,     null: false
-    field :revoked_at,   :naive_datetime, usec: true
+    field :revoked_at,   :naive_datetime_usec
     field :scopes,       :string
 
     timestamps(updated_at: false)

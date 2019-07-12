@@ -13,7 +13,11 @@ config :ex_oauth2_provider, ExOauth2Provider,
 config :ex_oauth2_provider, ecto_repos: [ExOauth2Provider.Test.Repo]
 
 config :ex_oauth2_provider, ExOauth2Provider.Test.Repo,
+  migration_timestamps: [type: :naive_datetime_usec],
   adapter: Ecto.Adapters.Postgres,
   database: "ex_oauth2_provider_test",
   pool: Ecto.Adapters.SQL.Sandbox,
-  priv: "priv/test"
+  priv: "priv/test",
+  username: System.get_env("DATABASE_POSTGRESQL_USERNAME") || "postgres",
+  password: System.get_env("DATABASE_POSTGRESQL_PASSWORD") || "postgres",
+  hostname: "localhost"

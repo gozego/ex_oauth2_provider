@@ -106,7 +106,7 @@ defmodule ExOauth2Provider.Token.Strategy.AuthorizationCodeTest do
   end
 
   test "#grant/1 error when revoked grant", %{access_grant: access_grant} do
-    changeset = Ecto.Changeset.change access_grant, revoked_at: DateTime.utc_now
+    changeset = Ecto.Changeset.change access_grant, revoked_at: NaiveDateTime.utc_now
     ExOauth2Provider.repo.update! changeset
 
     assert {:error, error, :unprocessable_entity} = grant(@valid_request)

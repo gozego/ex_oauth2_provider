@@ -22,7 +22,7 @@ defmodule <%= inspect mod %> do
       add :token,                  :string,         null: false
       add :expires_in,             :integer,        null: false
       add :redirect_uri,           :string,         null: false
-      add :revoked_at,             :naive_datetime
+      add :revoked_at,             :naive_datetime_usec
       add :scopes,                 :string
 
       timestamps(updated_at: false)
@@ -42,7 +42,7 @@ defmodule <%= inspect mod %> do
       add :token,                  :string, null: false
       add :refresh_token,          :string
       add :expires_in,             :integer
-      add :revoked_at,             :naive_datetime
+      add :revoked_at,             :naive_datetime_usec
       add :scopes,                 :string
       add :previous_refresh_token, :string, null: false, default: ""
 

@@ -14,7 +14,7 @@ defmodule ExOauth2Provider.OauthAccessTokens.OauthAccessToken do
     field :token,         :string, null: false
     field :refresh_token, :string
     field :expires_in,    :integer
-    field :revoked_at,    :naive_datetime, usec: true
+    field :revoked_at,    :naive_datetime_usec
     field :scopes,        :string
     field :previous_refresh_token, :string, null: false, default: ""
 
