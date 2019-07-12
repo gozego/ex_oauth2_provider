@@ -11,6 +11,8 @@ defmodule ExOauth2Provider.OauthApplications.OauthApplication do
     @derive {Phoenix.Param, key: :uid}
   end
 
+  @timestamps_opts [type: :naive_datetime_usec]
+
   schema "oauth_applications" do
     if is_nil(Config.application_owner_struct()) do
       Logger.error("You need to set a resource_owner or application_owner in your config and recompile ex_oauth2_provider!")

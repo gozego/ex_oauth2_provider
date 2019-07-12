@@ -5,6 +5,8 @@ defmodule ExOauth2Provider.OauthAccessTokens.OauthAccessToken do
   alias ExOauth2Provider.Config
   alias ExOauth2Provider.OauthApplications.OauthApplication
 
+  @timestamps_opts [type: :naive_datetime_usec]
+
   schema "oauth_access_tokens" do
     belongs_to :application, OauthApplication, on_replace: :nilify
     belongs_to :resource_owner, Config.resource_owner_struct(), Config.resource_owner_opts()
