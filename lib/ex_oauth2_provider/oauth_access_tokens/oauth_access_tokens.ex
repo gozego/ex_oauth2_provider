@@ -142,6 +142,13 @@ defmodule ExOauth2Provider.OauthAccessTokens do
     |> new_token_changeset(attrs)
     |> ExOauth2Provider.repo.insert()
   end
+  def create_token(_invalid, _attrs) do
+    cs_error =
+      %Ecto.Changeset{}
+      |> add_error(:resource_or_app, "invalid resource or application specified")
+
+    {:error, cs_error}
+  end
 
   @doc """
   Gets existing access token or creates a new one with supplied attributes.
